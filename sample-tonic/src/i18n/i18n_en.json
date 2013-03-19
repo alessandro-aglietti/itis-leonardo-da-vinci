@@ -7,7 +7,9 @@
 	"notes" : {
 		"title" : "Notes Page",
 		"h2" : "Insert your notes!",
-		"submit" : "Save this note"
+		"submit" : "Save this note",
+		"titolo" : "Insert the title",
+		"testo" : "Insert the text"
 	},
 	"note" : {
 		"title" : "Note"
