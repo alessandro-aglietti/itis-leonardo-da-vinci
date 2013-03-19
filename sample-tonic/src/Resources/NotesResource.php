@@ -19,9 +19,7 @@ class Notes extends Resource {
 
 		$notes = array();
 
-		$nota = new \Note("Nota 1 by costruct");
-
-		array_push($notes, $nota);
+		array_push($notes, new \Note("Nota 1 by costruct"));
 		array_push($notes, new \Note("Nota 2"));
 
 		$model = array(
