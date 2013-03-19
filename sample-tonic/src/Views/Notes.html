@@ -5,24 +5,17 @@
 		
 		{% include 'bootstrap-jquery.html' %}
 		
+		<script type="text/javascript" src="{{ burl }}/js/notes.js"></script>
+		
+		<link rel="stylesheet" media="screen" href="{{ burl }}/css/notes.css" />
+		
 		<title>{{ i18n.notes.title }}</title>
 	</head>
 	<body>
-		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span4 offset4">
-					<h2 style="text-align: center;">{{ i18n.notes.h2 }}</h2>
-				</div>
-			</div>
-			<div class="row-fluid">
-				<div class="span6 offset3">
-					<ul>
-					    {% for note in notes %}
-					        <li>{{ note.text }}</li>
-					    {% endfor %}
-					</ul>
-				</div>
-			</div>
+		<div id="container" class="container-fluid">
+			{% include 'notes-body.html' %}
 		</div>
+		
+		<img id="notepad" src="{{ burl }}/img/notepad.png" alt="notepad" />
 	</body>
 </html>

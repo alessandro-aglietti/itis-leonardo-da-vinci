@@ -3,8 +3,16 @@
 // inizializzo la sessione
 session_start();
 
+// BASE URL APPLICATIVO
+$baseUrl = "/itis-leonardo-da-vinci/sample-tonic";
+
 // Carica tutte le classi necessarie a Tonic
 require_once 'src/Tonic/Autoloader.php';
+
+//DB
+require_once 'src/DB/MySqlDriver.php';
+$db = new DB\MySQLDriver("192.168.103.119", "note", "note", "note");
+
 
 // Twig
 require_once 'src/Twig/Autoloader.php';
@@ -49,10 +57,13 @@ $i18n = json_decode($i18njson);
 
 // aggiungo l'i18n per tutti i template
 $twig->addGlobal("i18n", $i18n);
+$twig->addGlobal("burl", $baseUrl);
 
 // container disponibile da tutti i controllers
 $container = array(
-		"twig" => $twig
+		"twig" => $twig,
+		"db" => $db,
+		"burl" => $baseUrl
 );
 
 // Tonic options

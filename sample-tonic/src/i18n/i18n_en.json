@@ -6,6 +6,10 @@
 	},
 	"notes" : {
 		"title" : "Notes Page",
-		"h2" : "Insert your notes!"
+		"h2" : "Insert your notes!",
+		"submit" : "Save this note"
+	},
+	"note" : {
+		"title" : "Note"
 	}
 }

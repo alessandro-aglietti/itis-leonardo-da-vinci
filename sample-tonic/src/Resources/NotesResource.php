@@ -2,7 +2,7 @@
 
 namespace Resources;
 
-require_once 'src/Model/Note.php';
+require_once 'src/Model/Nota.php';
 
 use Tonic\Response, Tonic\Resource;
 
@@ -17,16 +17,55 @@ class Notes extends Resource {
 	 */
 	function get() {
 
-		$notes = array();
+		$page = $this->container["twig"]->render('Notes.html', $this->getAllNotes());
 
-		array_push($notes, new \Note("Nota 1 by costruct"));
-		array_push($notes, new \Note("Nota 2"));
+		return new Response(Response::OK, $page, array(
+				'content-type' => 'text/html'
+		));
+	}
+	
+	function getAllNotes() {
+		$model = array();
+		$model["notes"] = \Nota::findAll($this->container["db"]);
+		
+		return $model;
+	}
 
-		$model = array(
-				"notes" => $notes
-		);
+	/**
+	 * @method POST
+	 */
+	function post(){
+	
+		$data = array();
+		parse_str($this->request->data, $data);
+	
+		$nota = new \Nota($data["titolo"], $data["testo"]);
+	
+		$nota->save($this->container["db"]);
+		
+		$page = $this->container["twig"]->render('notes-body.html', $this->getAllNotes());
+		
+		return new Response(Response::OK, $page, array(
+				'content-type' => 'text/html'
+		));
+	}
+}
 
-		$page = $this->container["twig"]->render('Notes.html', $model);
+/**
+ * @uri /notes/:id
+ */
+class Note extends Resource {
+
+	/**
+	 * @method GET
+	 * @provides text/html
+	 */
+	function get($id = 1) {
+
+		$model = array();
+		$model["nota"] = \Nota::find($this->container["db"], $id);
+
+		$page = $this->container["twig"]->render('Note.html', $model);
 
 		return new Response(Response::OK, $page, array(
 				'content-type' => 'text/html'

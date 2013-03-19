@@ -6,6 +6,11 @@
 	},
 	"notes" : {
 		"title" : "Pagina delle note",
-		"h2" : "Inserisci qui le tue note"
+		"h2" : "Inserisci qui le tue note",
+		"submit" : "Salva questa nota!"
+	},
+	,
+	"note" : {
+		"title" : "Nota"
 	}
 }
