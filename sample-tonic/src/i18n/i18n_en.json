@@ -1,0 +1,11 @@
+{
+	"root" : {
+		"title" : "Title!!",
+		"h2" : "Custom i18n message!",
+		"notes" : "Go to Notes!"
+	},
+	"notes" : {
+		"title" : "Notes Page",
+		"h2" : "Insert your notes!"
+	}
+}
