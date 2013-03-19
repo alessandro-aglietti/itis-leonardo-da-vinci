@@ -2,7 +2,7 @@
 
 class Note {
 
-	public $text = "default";
+	public $text;
 
 	function Note($text){
 		$this->text = $text;
