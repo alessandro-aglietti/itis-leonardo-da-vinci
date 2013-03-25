@@ -17,18 +17,13 @@ class Notes extends Resource {
 	 */
 	function get() {
 
-		$page = $this->container["twig"]->render('Notes.html', $this->getAllNotes());
+		$model["notes"] = $this->container["em"]->getRepository("Nota")->findAll();
+
+		$page = $this->container["twig"]->render('Notes.html', $model);
 
 		return new Response(Response::OK, $page, array(
 				'content-type' => 'text/html'
 		));
-	}
-
-	function getAllNotes() {
-		$model = array();
-		$model["notes"] = \Nota::findAll($this->container["db"]);
-
-		return $model;
 	}
 
 	/**
@@ -41,12 +36,12 @@ class Notes extends Resource {
 
 		$nota = new \Nota($data["titolo"], $data["testo"]);
 
-		// 		$nota->save($this->container["db"]);
-
 		$this->container["em"]->persist($nota);
 		$this->container["em"]->flush();
 
-		$page = $this->container["twig"]->render('notes-body.html', $this->getAllNotes());
+		$model["notes"] = $this->container["em"]->getRepository("Nota")->findAll();
+
+		$page = $this->container["twig"]->render('notes-body.html', $model);
 
 		return new Response(Response::OK, $page, array(
 				'content-type' => 'text/html'
@@ -60,13 +55,23 @@ class Notes extends Resource {
 class Note extends Resource {
 
 	/**
+	 * @method DELETE
+	 * @provides text/html
+	 * @see http://docs.doctrine-project.org/en/2.0.x/reference/working-with-objects.html#removing-entities
+	 */
+	function delete($id = null) {
+
+	}
+
+
+	/**
 	 * @method GET
 	 * @provides text/html
 	 */
 	function get($id = 1) {
 
 		$model = array();
-		$model["nota"] = \Nota::find($this->container["db"], $id);
+		$model["nota"] = $this->container["em"]->getRepository("Nota")->find($id);
 
 		$page = $this->container["twig"]->render('Note.html', $model);
 

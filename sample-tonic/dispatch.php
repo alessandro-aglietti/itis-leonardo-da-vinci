@@ -9,10 +9,6 @@ $baseUrl = "/itis-leonardo-da-vinci/sample-tonic";
 // Carica tutte le classi necessarie a Tonic
 require_once 'src/Tonic/Autoloader.php';
 
-/** DB CLASSICO **/
-require_once 'src/DB/MySqlDriver.php';
-$db = new DB\MySQLDriver("192.168.1.128", "note", "note", "note");
-
 /** INIZIO DOCTRINE **/
 require_once 'src/Doctrine/Common/ClassLoader.php';
 
@@ -83,7 +79,6 @@ $twig->addGlobal("burl", $baseUrl);
 // container disponibile da tutti i controllers
 $container = array(
 		"twig" => $twig,
-		"db" => $db,
 		"burl" => $baseUrl,
 		"em" => $em
 );
