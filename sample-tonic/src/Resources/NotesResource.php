@@ -23,11 +23,11 @@ class Notes extends Resource {
 				'content-type' => 'text/html'
 		));
 	}
-	
+
 	function getAllNotes() {
 		$model = array();
 		$model["notes"] = \Nota::findAll($this->container["db"]);
-		
+
 		return $model;
 	}
 
@@ -35,16 +35,19 @@ class Notes extends Resource {
 	 * @method POST
 	 */
 	function post(){
-	
+
 		$data = array();
 		parse_str($this->request->data, $data);
-	
+
 		$nota = new \Nota($data["titolo"], $data["testo"]);
-	
-		$nota->save($this->container["db"]);
-		
+
+		// 		$nota->save($this->container["db"]);
+
+		$this->container["em"]->persist($nota);
+		$this->container["em"]->flush();
+
 		$page = $this->container["twig"]->render('notes-body.html', $this->getAllNotes());
-		
+
 		return new Response(Response::OK, $page, array(
 				'content-type' => 'text/html'
 		));
