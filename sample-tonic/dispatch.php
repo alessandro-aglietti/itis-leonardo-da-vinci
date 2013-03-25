@@ -11,7 +11,7 @@ require_once 'src/Tonic/Autoloader.php';
 
 //DB
 require_once 'src/DB/MySqlDriver.php';
-$db = new DB\MySQLDriver("192.168.103.119", "note", "note", "note");
+$db = new DB\MySQLDriver("192.168.1.128", "note", "note", "note");
 
 
 // Twig
