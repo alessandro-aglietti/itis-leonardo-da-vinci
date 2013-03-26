@@ -9,9 +9,26 @@ $baseUrl = "/itis-leonardo-da-vinci/sample-tonic";
 // Carica tutte le classi necessarie a Tonic
 require_once 'src/Tonic/Autoloader.php';
 
-//DB
-require_once 'src/DB/MySqlDriver.php';
-$db = new DB\MySQLDriver("192.168.1.128", "note", "note", "note");
+/** INIZIO DOCTRINE **/
+require_once 'src/Doctrine/Common/ClassLoader.php';
+
+$loader = new \Doctrine\Common\ClassLoader("Doctrine", __DIR__."/src");
+$loader->register();
+
+$dbParams = array(
+		'driver' => 'mysqli',
+		'host'    => '192.168.1.128',
+		'user' => 'note',
+		'password' => 'note',
+		'dbname' => 'note'
+);
+
+$entityFiles = array(
+		"./src/Model/"
+);
+$config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration($entityFiles, true);
+$em = \Doctrine\ORM\EntityManager::create($dbParams, $config);
+/** FINE DOCTRINE **/
 
 
 // Twig
@@ -62,8 +79,8 @@ $twig->addGlobal("burl", $baseUrl);
 // container disponibile da tutti i controllers
 $container = array(
 		"twig" => $twig,
-		"db" => $db,
-		"burl" => $baseUrl
+		"burl" => $baseUrl,
+		"em" => $em
 );
 
 // Tonic options
