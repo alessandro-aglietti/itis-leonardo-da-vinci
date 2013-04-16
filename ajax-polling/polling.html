@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.bordo {
+	border: 1px solid black;
+	margin: 20px;
+}
+</style>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script>
+	var GLOBAL_COUNT = 0;
+	var CURRENT_XHR = null;
+
+	$(function() {
+		// 		alert("onLoad");
+
+		setTimeout(polling, 2000);
+
+	});
+
+	function polling() {
+		console.log("polling: " + GLOBAL_COUNT++);
+
+		if (CURRENT_XHR != null) {
+			CURRENT_XHR.fail();
+		}
+
+		CURRENT_XHR = $.ajax({
+			url : "data.json?global_count=" + GLOBAL_COUNT,
+			type : "GET",
+			dataType : "json",
+		}).done(
+				function(data) {
+					console.log(data);
+
+					if (!$("#" + data.id).length) {
+						$("<div class='bordo' id='" + data.id + "'>")
+								.prependTo("body");
+					}
+					
+					$("#" + data.id).html("");
+
+					var p = $("<p>").html(data.text);
+					var h1 = $("<h1>").html(data.id + " - " + data.titolo);
+
+					$("#" + data.id).append(h1).append(p);
+
+					CURRENT_XHR = null;
+					
+					setTimeout(polling, 2000);
+
+				}).fail(function() {
+			alert("fail!");
+		});
+
+		// 		setTimeout(polling,2000);
+		// 		console.log("fine polling");
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>
