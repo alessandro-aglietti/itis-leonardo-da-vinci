@@ -1,13 +1,2 @@
 .DS_Store
-target
-build
-bin
 .settings
-*.project
-*.classpath
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
