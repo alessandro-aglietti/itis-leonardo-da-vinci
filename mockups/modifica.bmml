@@ -1,0 +1,25 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="790" measuredH="331" mockupW="491" mockupH="305">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="299" y="26" w="491" h="305" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Il%20mio%20primo%20taccuino%20%7C%20Taccuino%201%0Ahttp%3A//il.mio.primo.taccui.no/taccuino/1/</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::SubTitle" x="467" y="110" w="-1" h="-1" measuredW="114" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Taccuino%201</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::TextInput" x="314" y="257" w="154" h="-1" measuredW="79" measuredH="26" zOrder="2" locked="false" isInGroup="-1"/>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="481" y="257" w="87" h="27" measuredW="51" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Crea</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::RadioButtonGroup" x="314" y="137" w="-1" h="-1" measuredW="97" measuredH="105" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>-%20Nota%20numero%201%0A-%20Nota%20numero%202%0A-%20Nota%20numero%203%0A-%20Nota%20numero%204%0A-%20Nota%20numero%205</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
