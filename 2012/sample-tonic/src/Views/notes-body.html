@@ -1,0 +1,28 @@
+			<div class="row-fluid">
+				<div class="span4 offset4">
+					<h2 style="text-align: center;">{{ i18n.notes.h2 }}</h2>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span6 offset3">
+					<ul>
+					    {% for note in notes %}
+					        <li><a href="{{note.id}}">{{ note.titolo }}</a></li>
+					    {% endfor %}
+					</ul>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span6 offset3">
+					<form id="noteForm" action="" method="post">
+						<fieldset>
+							<label>{{i18n.notes.titolo}}</label>
+							<input type="text" name="titolo" />
+							<label>{{i18n.notes.testo}}</label>
+							<textarea rows="8" cols="40" name="testo"></textarea>
+							<br />
+							<input type="submit" class="btn" value="{{i18n.notes.submit}}" />
+						</fieldset>
+					</form>
+				</div>
+			</div>
