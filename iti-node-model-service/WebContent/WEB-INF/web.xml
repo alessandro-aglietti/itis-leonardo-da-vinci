@@ -25,10 +25,6 @@
 			<param-name>com.sun.jersey.config.feature.FilterForwardOn404</param-name>
 			<param-value>true</param-value>
 		</init-param>
-		<init-param>
-			<param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
-			<param-value>/_ah/.*</param-value>
-		</init-param>
 	</filter>
 	<filter-mapping>
 		<filter-name>jersey-front-controller</filter-name>
