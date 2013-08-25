@@ -16,7 +16,7 @@ public class PersistenceTest {
 				.createEntityManagerFactory("myFirstPersistenceUnit");
 
 		EntityManager em = emf.createEntityManager();
-		
+
 		em.getTransaction().begin();
 
 		Taccuino taccuino = new Taccuino("Il mio taccuino persistente");
@@ -27,7 +27,7 @@ public class PersistenceTest {
 
 		taccuino.addNota(nota);
 		em.persist(taccuino);
-		
+
 		em.getTransaction().commit();
 	}
 }

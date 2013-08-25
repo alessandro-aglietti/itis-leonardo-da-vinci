@@ -1,8 +1,11 @@
 package iti.note.model;
 
+import iti.note.jpa.DAOHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,8 +23,8 @@ public class Taccuino {
 
 	private String titolo;
 
-	@OneToMany
-	private List<Nota> note;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Nota> note = new ArrayList<Nota>();
 
 	public Taccuino() {
 		// TODO Auto-generated constructor stub
@@ -30,10 +33,21 @@ public class Taccuino {
 	public Taccuino(String titolo) {
 		super();
 		this.titolo = titolo;
-		this.note = new ArrayList<Nota>();
 	}
 
 	public void addNota(Nota nota) {
 		note.add(nota);
+	}
+
+	public void save() {
+		DAOHelper.save(this);
+	}
+
+	public static Taccuino findById(long id) {
+		return DAOHelper.findById(id, Taccuino.class);
+	}
+
+	public static List<Taccuino> findAll() {
+		return DAOHelper.findAll(Taccuino.class);
 	}
 }
