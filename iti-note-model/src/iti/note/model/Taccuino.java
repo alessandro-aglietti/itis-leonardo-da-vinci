@@ -39,8 +39,12 @@ public class Taccuino {
 		note.add(nota);
 	}
 
-	public void save() {
-		DAOHelper.save(this);
+	public void setTitolo(String titolo) {
+		this.titolo = titolo;
+	}
+
+	public Taccuino save() {
+		return DAOHelper.save(this);
 	}
 
 	public static Taccuino findById(long id) {
