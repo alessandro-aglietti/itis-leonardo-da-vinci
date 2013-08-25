@@ -10,6 +10,7 @@ public abstract class DAOHelper {
 		EntityManager em = EMF.get();
 		try {
 			em.getTransaction().begin();
+//			o = em.persist(o);
 			o = em.merge(o);
 			em.getTransaction().commit();
 		} finally {
