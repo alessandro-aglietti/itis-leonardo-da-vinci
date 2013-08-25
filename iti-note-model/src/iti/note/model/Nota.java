@@ -15,7 +15,7 @@ public class Nota {
 	private long id;
 
 	private String testo;
-	
+
 	public Nota() {
 		// TODO Auto-generated constructor stub
 	}
@@ -24,7 +24,4 @@ public class Nota {
 		super();
 		this.testo = testo;
 	}
-	
-	
-
 }
