@@ -1,6 +1,6 @@
 package iti.note.model;
 
-import iti.note.jpa.DAOHelper;
+import iti.note.jpa.ModelHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +35,10 @@ public class Taccuino {
 		this.titolo = titolo;
 	}
 
+	public long getId() {
+		return id;
+	}
+
 	public void addNota(Nota nota) {
 		note.add(nota);
 	}
@@ -43,15 +47,27 @@ public class Taccuino {
 		this.titolo = titolo;
 	}
 
-	public Taccuino save() {
-		return DAOHelper.save(this);
+	public Taccuino create() {
+		return ModelHelper.create(this);
 	}
 
-	public static Taccuino findById(long id) {
-		return DAOHelper.findById(id, Taccuino.class);
+	public Taccuino update() {
+		return create();
 	}
 
-	public static List<Taccuino> findAll() {
-		return DAOHelper.findAll(Taccuino.class);
+	public static Taccuino retrieveById(long id) {
+		return ModelHelper.retrieveById(id, Taccuino.class);
+	}
+
+	public static List<Taccuino> retrieveAll() {
+		return ModelHelper.retrieveAll(Taccuino.class);
+	}
+
+	public String getTitolo() {
+		return titolo;
+	}
+
+	public List<Nota> getNote() {
+		return note;
 	}
 }
