@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-public abstract class ModelHelper {
+public abstract class DAOHelper {
 
 	public static <T> T create(T o) {
 		EntityManager em = EMF.get();

@@ -12,6 +12,7 @@ public class HelloWorldRest {
 	@GET
 	@Produces({ MediaType.TEXT_HTML })
 	public Response get() {
+
 		return Response.ok("hello world").build();
 	}
 }
