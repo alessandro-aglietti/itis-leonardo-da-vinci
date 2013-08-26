@@ -4,22 +4,22 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-public abstract class DAOHelper {
+public abstract class ModelHelper {
 
-	public static <T> T save(T o) {
+	public static <T> T create(T o) {
 		EntityManager em = EMF.get();
+		em.getTransaction().begin();
 		try {
-			em.getTransaction().begin();
 			o = em.merge(o);
-			em.getTransaction().commit();
 		} finally {
+			em.getTransaction().commit();
 			em.close();
 		}
-		
+
 		return o;
 	}
 
-	public static <T> T findById(long id, Class<T> c) {
+	public static <T> T retrieveById(long id, Class<T> c) {
 		EntityManager em = EMF.get();
 		T t = null;
 		try {
@@ -30,7 +30,7 @@ public abstract class DAOHelper {
 		return t;
 	}
 
-	public static <T> List<T> findAll(Class<T> c) {
+	public static <T> List<T> retrieveAll(Class<T> c) {
 		EntityManager em = EMF.get();
 		List<T> tt = null;
 		try {
@@ -45,11 +45,11 @@ public abstract class DAOHelper {
 
 	public static <T> void delete(T o) {
 		EntityManager em = EMF.get();
+		em.getTransaction().begin();
 		try {
-			em.getTransaction().begin();
 			em.remove(o);
-			em.getTransaction().commit();
 		} finally {
+			em.getTransaction().commit();
 			em.close();
 		}
 	}
