@@ -35,18 +35,6 @@ public class Taccuino {
 		this.titolo = titolo;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void addNota(Nota nota) {
-		note.add(nota);
-	}
-
-	public void setTitolo(String titolo) {
-		this.titolo = titolo;
-	}
-
 	public Taccuino create() {
 		return ModelHelper.create(this);
 	}
@@ -61,6 +49,18 @@ public class Taccuino {
 
 	public static List<Taccuino> retrieveAll() {
 		return ModelHelper.retrieveAll(Taccuino.class);
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void addNota(Nota nota) {
+		note.add(nota);
+	}
+
+	public void setTitolo(String titolo) {
+		this.titolo = titolo;
 	}
 
 	public String getTitolo() {
