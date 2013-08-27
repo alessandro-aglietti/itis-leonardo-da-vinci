@@ -81,12 +81,12 @@ public class Taccuino {
 
 		try {
 			em = EMF.get();
-			
+
 			TypedQuery<Taccuino> q = em.createQuery("SELECT e FROM "
 					+ Taccuino.class.getSimpleName()
 					+ " e WHERE e.titolo LIKE :t", Taccuino.class);
-			
-			q.setParameter('t', '%' + titolo + '%');
+
+			q.setParameter("t", "%" + titolo + "%");
 
 			tt = q.getResultList();
 		} finally {
