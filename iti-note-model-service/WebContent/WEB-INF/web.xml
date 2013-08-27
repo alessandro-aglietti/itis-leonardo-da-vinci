@@ -53,11 +53,6 @@
 		<url-pattern>/HelloWorldServlet</url-pattern>
 	</servlet-mapping>
 
-	<listener>
-		<description>PersistenceListener</description>
-		<listener-class>iti.note.jpa.PersistenceListener</listener-class>
-	</listener>
-
 	<resource-ref>
 		<description>DB Connection</description>
 		<res-ref-name>jdbc/MyApp</res-ref-name>

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <Context antiJARLocking="true" path="/">
-	<Resource name="jdbc/MyApp" auth="Container" type="javax.sql.DataSource"
-		username="root" password="toor" driverClassName="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://192.168.56.101:3306/iti_note" maxActive="8" maxIdle="4" />
+	<Resource
+		name="jdbc/MyApp"
+		auth="Container"
+		factory="org.apache.naming.factory.BeanFactory"
+		type="com.mchange.v2.c3p0.ComboPooledDataSource"
+		
+		user="root"
+		password="toor"
+		driverClass="com.mysql.jdbc.Driver"
+		jdbcUrl="jdbc:mysql://192.168.56.101:3306/iti_note"	
+	/>
 </Context>

@@ -44,12 +44,12 @@ public class Taccuino {
 		return create();
 	}
 
-	public static Taccuino retrieveById(long id) {
-		return ModelHelper.retrieveById(id, Taccuino.class);
+	public static Taccuino retrieve(long id) {
+		return ModelHelper.retrieve(id, Taccuino.class);
 	}
 
-	public static List<Taccuino> retrieveAll() {
-		return ModelHelper.retrieveAll(Taccuino.class);
+	public static List<Taccuino> retrieve() {
+		return ModelHelper.retrieve(Taccuino.class);
 	}
 
 	public long getId() {

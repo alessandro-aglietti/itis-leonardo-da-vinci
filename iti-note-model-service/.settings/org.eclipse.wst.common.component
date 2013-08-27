@@ -2,7 +2,7 @@
     <wb-module deploy-name="iti-node-model-service">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="iti-node-model-service"/>
         <property name="java-output-path" value="/iti-node-model-service/build/classes"/>
+        <property name="context-root" value="iti-note-model-service"/>
     </wb-module>
 </project-modules>

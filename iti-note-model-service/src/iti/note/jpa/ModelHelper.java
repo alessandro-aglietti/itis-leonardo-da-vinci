@@ -19,7 +19,7 @@ public abstract class ModelHelper {
 		return o;
 	}
 
-	public static <T> T retrieveById(long id, Class<T> c) {
+	public static <T> T retrieve(long id, Class<T> c) {
 		EntityManager em = EMF.get();
 		T t = null;
 		try {
@@ -30,7 +30,7 @@ public abstract class ModelHelper {
 		return t;
 	}
 
-	public static <T> List<T> retrieveAll(Class<T> c) {
+	public static <T> List<T> retrieve(Class<T> c) {
 		EntityManager em = EMF.get();
 		List<T> tt = null;
 		try {

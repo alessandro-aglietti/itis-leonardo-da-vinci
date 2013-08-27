@@ -14,6 +14,6 @@ public class TaccuinoController {
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response get() {
-		return Response.ok(Taccuino.retrieveAll()).build();
+		return Response.ok(Taccuino.retrieve()).build();
 	}
 }
