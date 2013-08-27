@@ -76,15 +76,16 @@ public class Taccuino {
 	}
 
 	public static List<Taccuino> searchByTitolo(String titolo) {
+		final String sql = "SELECT e FROM " + Taccuino.class.getSimpleName()
+				+ " e WHERE e.titolo LIKE :t";
+
 		List<Taccuino> tt = new ArrayList<Taccuino>();
 		EntityManager em = null;
 
 		try {
 			em = EMF.get();
 
-			TypedQuery<Taccuino> q = em.createQuery("SELECT e FROM "
-					+ Taccuino.class.getSimpleName()
-					+ " e WHERE e.titolo LIKE :t", Taccuino.class);
+			TypedQuery<Taccuino> q = em.createQuery(sql, Taccuino.class);
 
 			q.setParameter("t", "%" + titolo + "%");
 
