@@ -41,7 +41,7 @@ public class Taccuino {
 	}
 
 	public Taccuino update() {
-		return create();
+		return ModelHelper.update(this);
 	}
 
 	public static Taccuino retrieve(long id) {
