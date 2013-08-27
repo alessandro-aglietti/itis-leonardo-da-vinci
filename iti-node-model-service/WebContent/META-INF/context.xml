@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context antiJARLocking="true" path="/">
+	<Resource name="jdbc/MyApp" auth="Container" type="javax.sql.DataSource"
+		username="root" password="toor" driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://192.168.56.101:3306/iti_note" maxActive="8" maxIdle="4" />
+</Context>
