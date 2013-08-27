@@ -1,5 +1,6 @@
 package iti.note.model;
 
+import iti.note.jpa.EMF;
 import iti.note.jpa.ModelHelper;
 
 import java.util.ArrayList;
@@ -7,12 +8,14 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.TypedQuery;
 
 @Entity
 @Table
@@ -70,5 +73,26 @@ public class Taccuino {
 
 	public List<Nota> getNote() {
 		return note;
+	}
+
+	public static List<Taccuino> searchByTitolo(String titolo) {
+		List<Taccuino> tt = new ArrayList<Taccuino>();
+		EntityManager em = null;
+
+		try {
+			em = EMF.get();
+			
+			TypedQuery<Taccuino> q = em.createQuery("SELECT e FROM "
+					+ Taccuino.class.getSimpleName()
+					+ " e WHERE e.titolo LIKE :t", Taccuino.class);
+			
+			q.setParameter('t', '%' + titolo + '%');
+
+			tt = q.getResultList();
+		} finally {
+			ModelHelper.closeEm(em);
+		}
+
+		return tt;
 	}
 }
