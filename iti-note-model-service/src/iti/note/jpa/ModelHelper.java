@@ -43,6 +43,10 @@ public abstract class ModelHelper {
 		return tt;
 	}
 
+	public static <T> T update(T o) {
+		return create(o);
+	}
+
 	public static <T> void delete(T o) {
 		EntityManager em = EMF.get();
 		em.getTransaction().begin();
