@@ -10,5 +10,11 @@
 		password="toor"
 		driverClass="com.mysql.jdbc.Driver"
 		jdbcUrl="jdbc:mysql://192.168.56.101:3306/iti_note"	
+		
+		acquireIncrement="1"
+		idleConnectionTestPeriod="100"
+		maxPoolSize="100"
+		maxStatements="0"
+		minPoolSize="10"
 	/>
 </Context>
