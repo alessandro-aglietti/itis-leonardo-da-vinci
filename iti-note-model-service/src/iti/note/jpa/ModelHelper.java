@@ -68,7 +68,7 @@ public abstract class ModelHelper {
 		}
 	}
 
-	private static void closeEm(EntityManager em) {
+	public static void closeEm(EntityManager em) {
 		if (em != null)
 			em.close();
 	}
