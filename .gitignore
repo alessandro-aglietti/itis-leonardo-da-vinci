@@ -3,3 +3,4 @@ bin/
 build/
 nbproject/
 *.form
+build.xml
