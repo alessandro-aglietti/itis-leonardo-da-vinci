@@ -1,5 +1,6 @@
 package iti.note.model;
 
+import iti.note.jpa.EMF;
 import iti.note.jpa.ModelHelper;
 
 import java.util.ArrayList;
@@ -7,11 +8,14 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.TypedQuery;
 
 @Entity
 @Table
@@ -23,7 +27,7 @@ public class Taccuino {
 
 	private String titolo;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Nota> note = new ArrayList<Nota>();
 
 	public Taccuino() {
@@ -40,15 +44,15 @@ public class Taccuino {
 	}
 
 	public Taccuino update() {
-		return create();
+		return ModelHelper.update(this);
 	}
 
-	public static Taccuino retrieveById(long id) {
-		return ModelHelper.retrieveById(id, Taccuino.class);
+	public static Taccuino retrieve(long id) {
+		return ModelHelper.retrieve(id, Taccuino.class);
 	}
 
-	public static List<Taccuino> retrieveAll() {
-		return ModelHelper.retrieveAll(Taccuino.class);
+	public static List<Taccuino> retrieve() {
+		return ModelHelper.retrieve(Taccuino.class);
 	}
 
 	public long getId() {
@@ -69,5 +73,27 @@ public class Taccuino {
 
 	public List<Nota> getNote() {
 		return note;
+	}
+
+	public static List<Taccuino> searchByTitolo(String titolo) {
+		final String sql = "SELECT e FROM " + Taccuino.class.getSimpleName()
+				+ " e WHERE e.titolo LIKE :t";
+
+		List<Taccuino> tt = new ArrayList<Taccuino>();
+		EntityManager em = null;
+
+		try {
+			em = EMF.get();
+
+			TypedQuery<Taccuino> q = em.createQuery(sql, Taccuino.class);
+
+			q.setParameter("t", "%" + titolo + "%");
+
+			tt = q.getResultList();
+		} finally {
+			ModelHelper.closeEm(em);
+		}
+
+		return tt;
 	}
 }
