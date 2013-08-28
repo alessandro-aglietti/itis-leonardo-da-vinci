@@ -3,3 +3,4 @@ bin/
 /build
 /taccuino-swing/nbproject/private/
 /taccuino-swing/build/
+*.form
