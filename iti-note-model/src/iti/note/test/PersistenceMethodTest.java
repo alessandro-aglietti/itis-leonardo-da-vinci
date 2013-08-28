@@ -23,7 +23,7 @@ public class PersistenceMethodTest {
 
 		t = t.update();
 
-		List<Taccuino> tt = Taccuino.retrieveAll();
+		List<Taccuino> tt = Taccuino.retrieve();
 		System.out.println("Trovati " + tt.size() + " taccuini");
 
 		// test jpa trasparent update
