@@ -1,6 +1,5 @@
 .DS_Store
 bin/
-/build
-/taccuino-swing/nbproject/private/
-/taccuino-swing/build/
+build/
+nbproject/
 *.form
