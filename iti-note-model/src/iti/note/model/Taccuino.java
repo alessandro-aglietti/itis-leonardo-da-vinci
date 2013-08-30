@@ -3,6 +3,7 @@ package iti.note.model;
 import iti.note.jpa.EMF;
 import iti.note.jpa.ModelHelper;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import javax.persistence.TypedQuery;
 
 @Entity
 @Table
-public class Taccuino {
+public class Taccuino implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,22 +38,6 @@ public class Taccuino {
 	public Taccuino(String titolo) {
 		super();
 		this.titolo = titolo;
-	}
-
-	public Taccuino create() {
-		return ModelHelper.create(this);
-	}
-
-	public Taccuino update() {
-		return ModelHelper.update(this);
-	}
-
-	public static Taccuino retrieve(long id) {
-		return ModelHelper.retrieve(id, Taccuino.class);
-	}
-
-	public static List<Taccuino> retrieve() {
-		return ModelHelper.retrieve(Taccuino.class);
 	}
 
 	public long getId() {
@@ -73,6 +58,30 @@ public class Taccuino {
 
 	public List<Nota> getNote() {
 		return note;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setNote(List<Nota> note) {
+		this.note = note;
+	}
+
+	public Taccuino create() {
+		return ModelHelper.create(this);
+	}
+
+	public Taccuino update() {
+		return ModelHelper.update(this);
+	}
+
+	public static Taccuino retrieve(long id) {
+		return ModelHelper.retrieve(id, Taccuino.class);
+	}
+
+	public static List<Taccuino> retrieve() {
+		return ModelHelper.retrieve(Taccuino.class);
 	}
 
 	public static List<Taccuino> searchByTitolo(String titolo) {
