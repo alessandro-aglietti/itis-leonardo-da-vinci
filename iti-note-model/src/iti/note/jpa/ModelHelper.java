@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-public abstract class DAOHelper {
+public abstract class ModelHelper {
 
 	public static <T> T create(T o) {
 		EntityManager em = null;
