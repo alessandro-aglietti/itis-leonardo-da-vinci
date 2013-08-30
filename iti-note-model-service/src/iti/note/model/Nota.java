@@ -12,6 +12,8 @@ import javax.persistence.Table;
 @Table
 public class Nota implements Serializable {
 
+	private static final long serialVersionUID = 7741312373326432357L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
