@@ -18,7 +18,7 @@ import javax.persistence.ManyToOne;
  * @author gabrieleposca
  */
 @Entity
-public class Note implements Serializable {
+public class Nota implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +27,7 @@ public class Note implements Serializable {
 	private String testo;
 
 	@ManyToOne
-	@JoinColumn(name = "taccuino")
+	@JoinColumn(name = "taccuino_id")
 	private Taccuino taccuino;
 
 	public String getTesto() {
@@ -65,10 +65,10 @@ public class Note implements Serializable {
 	public boolean equals(Object object) {
 		// TODO: Warning - this method won't work in the case the id fields are
 		// not set
-		if (!(object instanceof Note)) {
+		if (!(object instanceof Nota)) {
 			return false;
 		}
-		Note other = (Note) object;
+		Nota other = (Nota) object;
 		if ((this.id == null && other.id != null)
 				|| (this.id != null && !this.id.equals(other.id))) {
 			return false;

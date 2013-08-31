@@ -7,7 +7,7 @@ package it.taccuino.view;
 import it.taccuino.controller.NoteJpaController;
 import it.taccuino.controller.TaccuinoJpaController;
 import it.taccuino.controller.exceptions.NonexistentEntityException;
-import it.taccuino.model.Note;
+import it.taccuino.model.Nota;
 import it.taccuino.model.Taccuino;
 
 import java.util.Iterator;
@@ -44,14 +44,14 @@ public class DettagliTaccuino extends javax.swing.JFrame {
 				return false; // Disallow the editing of any cell
 			}
 		};
-		List<Note> listaNote = noteJpaController.findNoteByIdTaccuino(taccuino
+		List<Nota> listaNote = noteJpaController.findNoteByIdTaccuino(taccuino
 				.getId());
 		int i = 0;
 		String[] header = { "Id", "Nota" };
 		model.setColumnIdentifiers(header);
 		model.setColumnCount(2);
-		for (Iterator<Note> it = listaNote.iterator(); it.hasNext(); i++) {
-			Note tmp = it.next();
+		for (Iterator<Nota> it = listaNote.iterator(); it.hasNext(); i++) {
+			Nota tmp = it.next();
 			model.setRowCount(model.getRowCount() + 1);
 			model.setValueAt(tmp.getId(), i, 0);
 			model.setValueAt(tmp.getTesto().toString(), i, 1);
@@ -241,7 +241,7 @@ public class DettagliTaccuino extends javax.swing.JFrame {
 		testo = JOptionPane.showInputDialog(null,
 				"Inserisci il testo della nota", "");
 		if (testo != null) {
-			Note n = new Note();
+			Nota n = new Nota();
 			n.setTesto(testo);
 			n.setTaccuino(taccuino);
 			NoteJpaController noteJpaController = new NoteJpaController();
@@ -264,7 +264,7 @@ public class DettagliTaccuino extends javax.swing.JFrame {
 				"Inserisci il testo della nota", "");
 		if (testo != null) {
 			NoteJpaController noteJpaController = new NoteJpaController();
-			Note n = noteJpaController.findNote(Long.parseLong(id, 10));
+			Nota n = noteJpaController.findNote(Long.parseLong(id, 10));
 			n.setTesto(testo);
 			try {
 				noteJpaController.edit(n);

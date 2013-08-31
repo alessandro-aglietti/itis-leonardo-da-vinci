@@ -5,6 +5,7 @@
 package it.taccuino.controller;
 
 import it.taccuino.controller.exceptions.NonexistentEntityException;
+import it.taccuino.model.Nota;
 import it.taccuino.model.Taccuino;
 
 import java.io.Serializable;
@@ -37,7 +38,7 @@ public class TaccuinoJpaController implements Serializable {
 	public void create(Taccuino taccuino) {
 		EntityManager em = null;
 		try {
-			em = EMF.get().createEntityManager();
+			em = EMF.get();
 			em.getTransaction().begin();
 			em.persist(taccuino);
 			em.getTransaction().commit();
@@ -52,7 +53,7 @@ public class TaccuinoJpaController implements Serializable {
 			Exception {
 		EntityManager em = null;
 		try {
-			em = EMF.get().createEntityManager();
+			em = EMF.get();
 			em.getTransaction().begin();
 			taccuino = em.merge(taccuino);
 			em.getTransaction().commit();
@@ -76,7 +77,7 @@ public class TaccuinoJpaController implements Serializable {
 	public void destroy(Long id) throws NonexistentEntityException {
 		EntityManager em = null;
 		try {
-			em = EMF.get().createEntityManager();
+			em = EMF.get();
 			em.getTransaction().begin();
 			Taccuino taccuino;
 			try {
@@ -105,7 +106,7 @@ public class TaccuinoJpaController implements Serializable {
 
 	private List<Taccuino> findTaccuinoEntities(boolean all, int maxResults,
 			int firstResult) {
-		EntityManager em = EMF.get().createEntityManager();
+		EntityManager em = EMF.get();
 		try {
 			Query q = em.createQuery("select object(o) from Taccuino as o");
 			if (!all) {
@@ -119,7 +120,7 @@ public class TaccuinoJpaController implements Serializable {
 	}
 
 	public Taccuino findTaccuino(Long id) {
-		EntityManager em = EMF.get().createEntityManager();
+		EntityManager em = EMF.get();
 		try {
 			return em.find(Taccuino.class, id);
 		} finally {
@@ -128,7 +129,7 @@ public class TaccuinoJpaController implements Serializable {
 	}
 
 	public int getTaccuinoCount() {
-		EntityManager em = EMF.get().createEntityManager();
+		EntityManager em = EMF.get();
 		try {
 			Query q = em.createQuery("select count(o) from Taccuino as o");
 			return ((Long) q.getSingleResult()).intValue();
@@ -138,11 +139,11 @@ public class TaccuinoJpaController implements Serializable {
 	}
 
 	public int countNoteByTaccuinoId(String id) {
-		EntityManager em = EMF.get().createEntityManager();
+		EntityManager em = EMF.get();
 		try {
-			Query q = em
-					.createQuery("select count(n) from Note as n where n.taccuino.id="
-							+ id);
+			Query q = em.createQuery("select count(n) from "
+					+ Nota.class.getSimpleName()
+					+ " as n where n.taccuino.id=" + id);
 			return ((Long) q.getSingleResult()).intValue();
 		} finally {
 			em.close();

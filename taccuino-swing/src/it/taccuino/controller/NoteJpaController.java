@@ -5,7 +5,7 @@
 package it.taccuino.controller;
 
 import it.taccuino.controller.exceptions.NonexistentEntityException;
-import it.taccuino.model.Note;
+import it.taccuino.model.Nota;
 
 import java.io.Serializable;
 import java.util.List;
@@ -34,10 +34,10 @@ public class NoteJpaController implements Serializable {
 	@Resource
 	private UserTransaction utx = null;
 
-	public void create(Note note) {
+	public void create(Nota note) {
 		EntityManager em = null;
 		try {
-			em = EMF.get().createEntityManager();
+			em = EMF.get();
 			em.getTransaction().begin();
 			em.persist(note);
 			em.getTransaction().commit();
@@ -48,10 +48,10 @@ public class NoteJpaController implements Serializable {
 		}
 	}
 
-	public void edit(Note note) throws NonexistentEntityException, Exception {
+	public void edit(Nota note) throws NonexistentEntityException, Exception {
 		EntityManager em = null;
 		try {
-			em = EMF.get().createEntityManager();
+			em = EMF.get();
 			em.getTransaction().begin();
 			note = em.merge(note);
 			em.getTransaction().commit();
@@ -75,11 +75,11 @@ public class NoteJpaController implements Serializable {
 	public void destroy(Long id) throws NonexistentEntityException {
 		EntityManager em = null;
 		try {
-			em = EMF.get().createEntityManager();
+			em = EMF.get();
 			em.getTransaction().begin();
-			Note note;
+			Nota note;
 			try {
-				note = em.getReference(Note.class, id);
+				note = em.getReference(Nota.class, id);
 				note.getId();
 			} catch (EntityNotFoundException enfe) {
 				throw new NonexistentEntityException("The note with id " + id
@@ -94,19 +94,19 @@ public class NoteJpaController implements Serializable {
 		}
 	}
 
-	public List<Note> findNoteEntities() {
+	public List<Nota> findNoteEntities() {
 		return findNoteEntities(true, -1, -1);
 	}
 
-	public List<Note> findNoteEntities(int maxResults, int firstResult) {
+	public List<Nota> findNoteEntities(int maxResults, int firstResult) {
 		return findNoteEntities(false, maxResults, firstResult);
 	}
 
-	private List<Note> findNoteEntities(boolean all, int maxResults,
+	private List<Nota> findNoteEntities(boolean all, int maxResults,
 			int firstResult) {
-		EntityManager em = EMF.get().createEntityManager();
+		EntityManager em = EMF.get();
 		try {
-			Query q = em.createQuery("select object(o) from Note as o");
+			Query q = em.createQuery("select object(o) from " + Nota.class.getSimpleName() + " as o");
 			if (!all) {
 				q.setMaxResults(maxResults);
 				q.setFirstResult(firstResult);
@@ -117,30 +117,30 @@ public class NoteJpaController implements Serializable {
 		}
 	}
 
-	public Note findNote(Long id) {
-		EntityManager em = EMF.get().createEntityManager();
+	public Nota findNote(Long id) {
+		EntityManager em = EMF.get();
 		try {
-			return em.find(Note.class, id);
+			return em.find(Nota.class, id);
 		} finally {
 			em.close();
 		}
 	}
 
 	public int getNoteCount() {
-		EntityManager em = EMF.get().createEntityManager();
+		EntityManager em = EMF.get();
 		try {
-			Query q = em.createQuery("select count(o) from Note as o");
+			Query q = em.createQuery("select count(o) from " + Nota.class.getSimpleName() + " as o");
 			return ((Long) q.getSingleResult()).intValue();
 		} finally {
 			em.close();
 		}
 	}
 
-	public List<Note> findNoteByIdTaccuino(Long id) {
-		EntityManager em = EMF.get().createEntityManager();
+	public List<Nota> findNoteByIdTaccuino(Long id) {
+		EntityManager em = EMF.get();
 		try {
 			Query q = em
-					.createQuery("select n from Note as n where n.taccuino.id="
+					.createQuery("select n from " + Nota.class.getSimpleName() + " as n where n.taccuino.id="
 							+ id);
 			return q.getResultList();
 		} finally {
