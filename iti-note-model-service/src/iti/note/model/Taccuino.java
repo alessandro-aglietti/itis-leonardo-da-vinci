@@ -22,7 +22,7 @@ import javax.persistence.TypedQuery;
 @Entity
 @Table
 public class Taccuino implements Serializable {
-	
+
 	private static final long serialVersionUID = -8337410006399411303L;
 
 	@Id
@@ -32,7 +32,7 @@ public class Taccuino implements Serializable {
 	private String titolo;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="id")
+	@JoinColumn(name = "taccuino_id")
 	private List<Nota> note = new ArrayList<Nota>();
 
 	public Taccuino() {
