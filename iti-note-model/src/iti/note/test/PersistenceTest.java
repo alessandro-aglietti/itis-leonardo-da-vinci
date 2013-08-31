@@ -14,18 +14,15 @@ public class PersistenceTest {
 
 		EntityManagerFactory emf = Persistence
 				.createEntityManagerFactory("myFirstPersistenceUnit");
-
+		
 		EntityManager em = emf.createEntityManager();
+		
+		Taccuino taccuino = new Taccuino("Il mio taccuino persistente");
+		Nota nota = new Nota("La mia nota persistente");
+		taccuino.addNota(nota);
 
 		em.getTransaction().begin();
-
-		Taccuino taccuino = new Taccuino("Il mio taccuino persistente");
-		em.persist(taccuino);
-
-		Nota nota = new Nota("La mia nota persistente");
-		em.persist(nota);
-
-		taccuino.addNota(nota);
+		
 		em.persist(taccuino);
 
 		em.getTransaction().commit();

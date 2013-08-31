@@ -32,7 +32,7 @@ public class Taccuino implements Serializable {
 	private String titolo;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "taccuino_id")
 	private List<Nota> note = new ArrayList<Nota>();
 
 	public Taccuino() {
