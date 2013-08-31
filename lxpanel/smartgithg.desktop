@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=SmartGitHg
+Comment=SmartGitHg
+Exec=/home/utente/smartgithg-4_6_3/bin/smartgithg.sh
+Terminal=false
+Type=Application
+Categories=Development
