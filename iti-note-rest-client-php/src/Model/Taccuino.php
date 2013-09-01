@@ -2,22 +2,16 @@
 
 namespace Model;
 
-require 'vendor/autoload.php';
-
-use Guzzle\Http\Client;
-
 class Taccuino {
 	
-	private $client;
-
-	function __construct($url = 'http://localhost:8080/iti-note-model-service'){
-		$this->client = new Client( $url );
-	}
+	public $id;
 	
-	function retrive($path = 'taccuino') {
-		$request = $this->client->get($path);
-		$response = $request->send ();
-		return $response->json();
+	public $titolo;
+	
+	public $note;
+	
+	function __construct($titolo){
+		$this->titolo = $titolo;
 	}
 }
 ?>
