@@ -1,12 +1,16 @@
 package iti.note.jdbc;
 
+import iti.note.test.model.TaccuinoTestCase;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 public class PostgreSQLConnection {
+
 	private static final Properties JDBC_PROPERTIES = new Properties();
 	static {
 		try {
