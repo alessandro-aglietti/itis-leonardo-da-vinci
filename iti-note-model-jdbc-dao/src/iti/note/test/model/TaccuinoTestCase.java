@@ -3,6 +3,7 @@ package iti.note.test.model;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+import iti.note.dao.TaccuinoDAO;
 import iti.note.jdbc.PostgreSQLConnection;
 import iti.note.model.Taccuino;
 
@@ -45,7 +46,7 @@ public class TaccuinoTestCase {
 		t.setTitolo("Taccuino JDBC");
 
 		try {
-			t.create(PostgreSQLConnection.getConn());
+			TaccuinoDAO.create(t);
 		} catch (SQLException e) {
 			log.severe(ExceptionUtils.getStackTrace(e));
 			fail(e.getMessage());
@@ -53,7 +54,7 @@ public class TaccuinoTestCase {
 
 		List<Taccuino> tt = new ArrayList<Taccuino>();
 		try {
-			tt = Taccuino.list(PostgreSQLConnection.getConn());
+			tt = TaccuinoDAO.list();
 		} catch (SQLException e) {
 			log.severe(ExceptionUtils.getStackTrace(e));
 			fail(e.getMessage());
