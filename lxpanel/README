@@ -1,0 +1,5 @@
+Modificare questi due file correggendo i percorsi dei file.
+
+Copiarli in /usr/share/applications/
+
+Utilizzare # lxpanelctl restart per riavviare il pannello e vedere applicate le modifiche.

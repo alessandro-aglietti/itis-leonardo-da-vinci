@@ -4,4 +4,5 @@ Comment=SmartGitHg
 Exec=/home/utente/smartgithg-4_6_3/bin/smartgithg.sh
 Terminal=false
 Type=Application
+Icon=/home/utente/smartgithg-4_6_3/bin/smartgithg-32.png
 Categories=Development
