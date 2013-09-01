@@ -1,0 +1,17 @@
+installare php con apt-get install php5
+installare apache2 con apt-get install apache2
+installare xdebug con apt-get install php5-xdebug
+controllare l'installazione di xdebug con php -m
+configurare il browser di default per eclipse
+configuare php in eclipse
+configuarare php server
+spostare la document root di apache
+configurare debug php in eclipse
+modificare xdebug.ini
+	xdebug.remote_enable=On
+	xdebug.remote_host="localhost"
+	xdebug.remote_port=9000
+	xdebug.remote_handler="dbgp"
+riavviare apache2
+
+thanks to http://www.tim-richardson.net/joomla15/tech-articles-list-techmenu-71/137-xdebug-and-php-with-eclipse-on-debian.html
