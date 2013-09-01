@@ -37,43 +37,9 @@ public class Taccuino {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-
-	public void create(Connection conn) throws SQLException {
-		// comando SQL parametrico
-		String sql = "INSERT INTO Taccuino (id, titolo) VALUES (?,?)";
-
-		// completo il comando aggiungendo le parti parametriche
-		PreparedStatement preparedStatement = conn.prepareStatement(sql);
-		preparedStatement.setLong(1, this.getId());
-		preparedStatement.setString(2, this.getTitolo());
-
-		System.out.println("SQL: " + preparedStatement.toString());
-
-		// eseguo l'inserimento
-		preparedStatement.executeUpdate();
-
-		System.out
-				.println("Inserimento completato con successo per l'oggetto: "
-						+ this.toString());
-	}
-
-	public static List<Taccuino> list(Connection conn) throws SQLException {
-		List<Taccuino> ms = new ArrayList<Taccuino>();
-
-		// comando SQL parametrico
-		String sql = "SELECT * FROM Taccuino";
-
-		// completo il comando aggiungendo le parti parametriche
-		PreparedStatement preparedStatement = conn.prepareStatement(sql);
-
-		ResultSet rs = preparedStatement.executeQuery();
-
-		// scorro tutti i risultati
-		while (rs.next()) {
-			// aggiungo alla lista di risultati la riga corrente
-			ms.add(new Taccuino(rs.getLong("id"), rs.getString("titolo")));
-		}
-
-		return ms;
+	
+	@Override
+	public String toString() {
+		return "{ 'id' : " + this.getId() + ", 'titolo' : '" + this.getTitolo() + "' }";
 	}
 }
