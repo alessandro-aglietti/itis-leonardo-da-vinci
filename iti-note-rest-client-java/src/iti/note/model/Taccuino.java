@@ -54,10 +54,10 @@ public class Taccuino implements Serializable {
 	}
 
 	public Taccuino create() {
-		return ClientHelper.create(this);
+		return ClientHelper.create("http://localhost:8080/iti-note-model-service/taccuino", this);
 	}
 
 	public static List<Taccuino> retrieve() {
-		return ClientHelper.retrieve(Taccuino.class);
+		return ClientHelper.retrieve("http://localhost:8080/iti-note-model-service/taccuino");
 	}
 }
