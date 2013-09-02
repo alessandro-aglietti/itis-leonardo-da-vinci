@@ -20,14 +20,18 @@ public class TaccuinoClientTest {
 	@Test
 	public void test() {
 		DefaultClientConfig cc = new DefaultClientConfig();
-		cc.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, true);
+		cc.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING,
+				Boolean.TRUE);
 
 		Client client = Client.create(cc);
 
 		WebResource r = client
 				.resource("http://localhost:8080/iti-note-model-service/taccuino");
 
-		r.type(MediaType.APPLICATION_JSON);
+		Taccuino t = r.type(MediaType.APPLICATION_JSON).post(Taccuino.class,
+				new Taccuino("Taccuino by Jersey"));
+
+		assertNotNull(t.getId());
 
 		List<Taccuino> tt = r.get(new GenericType<List<Taccuino>>() {
 		});
