@@ -29,29 +29,35 @@ $conn = array(
 		'dbname' => 'iti_note'
 );
 
-// obtaining the entity manager
 $entityManager = EntityManager::create($conn, $config);
 
-/**
-$t = new ITI\Model\Taccuino("by doctrine");
 
-$n = new ITI\Model\Nota("nota by doctrine");
+/*
+    INSERIMENTO TACCUINO/NOTA
 
-$t->note = array($n);
+$taccuino = new ITI\Model\Taccuino('primo taccuino');
+$nota = new ITI\Model\Nota('prima nota del primo taccuino');
 
-$entityManager->persist($t);
+$nota->setTaccuino($taccuino);
+$taccuino->getNotes()->add($nota);
 
+$entityManager->persist($taccuino);
 $entityManager->flush();
 
 */
 
-$tRepo = $entityManager->getRepository('ITI\Model\Taccuino');
-$tt = $tRepo->findAll();
+/*
+    VISUALIZZAZIONE TACCUINI/NOTE
 
-echo "Totale taccuini: " . count($tt);
+$taccuini = $entityManager->getRepository('ITI\Model\Taccuino')->findAll();
 
-$t = $tt[0];
-echo "Il taccuino " . $t->titolo . " ha " . count($t->note) . " note salvate";
+foreach($taccuini as $t) {
+    echo "Taccuino: " . $t->titolo . "\n";
+    echo "Note: " . count($t->getNotes()) . "\n";
+} 
 
-//var_dump($tt);
+*/
+
+echo "Yeah";
+
 ?>
