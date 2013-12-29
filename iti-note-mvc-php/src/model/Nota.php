@@ -2,39 +2,31 @@
 
 namespace ITI\Model;
 
-/**
- * @Entity
- * @Table(name="nota")
- **/
-class Nota {
+/** @Entity **/
+class Nota
+{
+    
+    /** @Id @Column(type="integer") @GeneratedValue **/
+    public $id;
 
-	/** @Id
-	 * @Column(type="integer") 
-	 * @GeneratedValue(strategy="SEQUENCE")
-	 * @SequenceGenerator(sequenceName="hibernate_sequence")
-	**/
-	public $id;
-
-	/**
-	 * @Column(type="string")
-	**/
-	public $testo;
-
-	/**
-     * @Column(type="integer")
-     * @ManyToOne(targetEntity="ITI\Model\Taccuino", inversedBy="id")
+    /**
+     * @Column(type="string")
+    **/
+    public $testo;
+    /**
+     * @ManyToOne(targetEntity="Taccuino", inversedBy="notes")
+     * @JoinColumn(name="taccuino_id", referencedColumnName="id")
      **/
-	public $taccuino_id;
+    private $taccuino;
+    // ...
 
-	function __construct($testo, $id = null){
-		$this->testo = $testo;
-		
-		$this->id = $id;
-	}
-	
-	function setTaccuino_id($taccuino_id){
-		$this->taccuino_id = $taccuino_id;
-	}
+    public function __construct($testo = '') {
+        $this->testo = $testo;
+    }
+
+    public function setTaccuino($taccuino) {
+        $this->taccuino = $taccuino;
+    }
 }
 
 ?>
