@@ -16,11 +16,10 @@ class Taccuino
      * @OneToMany(targetEntity="Nota", mappedBy="taccuino", cascade={"persist"})
      **/
     private $notes;
-    // ...
 
     public function __construct($titolo = '') {
-        $this->titolo    = $titolo;
-        $this->notes = new ArrayCollection();
+        $this->titolo = $titolo;
+        $this->notes  = new ArrayCollection();
     }
 
     public function setNotes($notes) {
