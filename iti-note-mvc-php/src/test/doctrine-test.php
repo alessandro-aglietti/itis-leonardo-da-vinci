@@ -32,9 +32,10 @@ $conn = array(
 $entityManager = EntityManager::create($conn, $config);
 
 
-/*
-    INSERIMENTO TACCUINO/NOTA
 
+//    INSERIMENTO TACCUINO/NOTA
+
+/*
 $taccuino = new ITI\Model\Taccuino('primo taccuino');
 $nota = new ITI\Model\Nota('prima nota del primo taccuino');
 
@@ -43,20 +44,21 @@ $taccuino->getNotes()->add($nota);
 
 $entityManager->persist($taccuino);
 $entityManager->flush();
-
 */
 
-/*
-    VISUALIZZAZIONE TACCUINI/NOTE
 
+
+// VISUALIZZAZIONE TACCUINI/NOTE
+
+/*
 $taccuini = $entityManager->getRepository('ITI\Model\Taccuino')->findAll();
 
 foreach($taccuini as $t) {
     echo "Taccuino: " . $t->titolo . "\n";
     echo "Note: " . count($t->getNotes()) . "\n";
 } 
-
 */
+
 
 echo "Yeah";
 

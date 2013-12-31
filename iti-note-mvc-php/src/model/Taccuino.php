@@ -6,7 +6,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 /** @Entity **/
 class Taccuino
 {
-    /** @Id @Column(type="integer") @GeneratedValue **/
+    /**
+     * @Id @Column(type="integer")
+     * @GeneratedValue(strategy="SEQUENCE")
+	 * @SequenceGenerator(sequenceName="hibernate_sequence")
+     **/
     public $id;
 
     /** @Column(type="string") **/

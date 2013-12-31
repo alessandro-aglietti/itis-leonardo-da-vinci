@@ -6,7 +6,11 @@ namespace ITI\Model;
 class Nota
 {
     
-    /** @Id @Column(type="integer") @GeneratedValue **/
+    /**
+     * @Id @Column(type="integer")
+     * @GeneratedValue(strategy="SEQUENCE")
+	 * @SequenceGenerator(sequenceName="hibernate_sequence")
+     * **/
     public $id;
 
     /**
