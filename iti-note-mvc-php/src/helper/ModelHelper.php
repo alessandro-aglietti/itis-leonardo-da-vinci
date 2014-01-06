@@ -29,5 +29,15 @@ class ModelHelper {
 		
 		$em->close();
 	}
+	
+	public static function retrieve($path) {
+		$client = new \Guzzle\Http\Client ( 'http://localhost:8080/iti-note-model-service' );
+		
+		$request = $client->get( $path );
+	
+		$response = $request->send();
+	
+		return $response->json();
+	}
 }
 ?>

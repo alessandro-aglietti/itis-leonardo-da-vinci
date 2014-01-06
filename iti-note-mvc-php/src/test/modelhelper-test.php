@@ -12,4 +12,6 @@ $nota->setTaccuino( $taccuino );
 $taccuino->getNotes()->add( $nota );
 
 $taccuino->create();
+
+echo json_encode(ITI\Model\Taccuino::retrieve());
 ?>

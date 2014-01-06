@@ -37,6 +37,10 @@ class Taccuino
     public function create() {
     	\ITI\Helper\ModelHelper::create($this);
     }
+    
+    public static function retrieve(){
+    	return \ITI\Helper\ModelHelper::retrieve('taccuino');
+    } 
 }
 
 ?>
