@@ -33,6 +33,10 @@ class Taccuino
     public function getNotes() {
         return $this->notes;
     }
+    
+    public function create() {
+    	\ITI\Helper\ModelHelper::create($this);
+    }
 }
 
 ?>

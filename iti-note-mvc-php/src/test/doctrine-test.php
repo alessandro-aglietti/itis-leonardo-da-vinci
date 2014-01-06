@@ -31,8 +31,6 @@ $conn = array(
 
 $entityManager = EntityManager::create($conn, $config);
 
-
-
 //    INSERIMENTO TACCUINO/NOTA
 
 /*
