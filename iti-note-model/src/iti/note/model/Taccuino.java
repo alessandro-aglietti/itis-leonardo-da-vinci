@@ -31,7 +31,7 @@ public class Taccuino implements Serializable {
 
 	private String titolo;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "taccuino_id")
 	private List<Nota> note = new ArrayList<Nota>();
 
