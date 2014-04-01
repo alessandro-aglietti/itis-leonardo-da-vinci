@@ -1,0 +1,21 @@
+{
+	"type": "Collection",
+	"properties": {
+		"titolo": {
+			"name": "titolo",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "titolo",
+			"order": 0
+		},
+		"note": {
+			"name": "note",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "note",
+			"order": 1
+		}
+	}
+}

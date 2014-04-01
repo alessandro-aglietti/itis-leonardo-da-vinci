@@ -1,0 +1,21 @@
+.taccuino .panel-footer {
+	text-align:right;
+}
+
+.taccuino .nota {
+	display:inline-block;
+	margin:15px;
+}
+
+.taccuino .nota .nota-footer {
+	text-align:right;
+}
+
+#loading-overlay {
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background:rgba(255,255,255,.75) url(/img/spinner64.gif) no-repeat center center;
+}
