@@ -61,6 +61,7 @@ public class TaccuinoTestCase {
 		}
 
 		assertFalse(tt.isEmpty());
+	
 
 		try {
 			PostgreSQLConnection.getConn().rollback(sp);
