@@ -1,11 +1,5 @@
 package iti.note.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Taccuino {
 	private long id;
@@ -16,15 +10,16 @@ public class Taccuino {
 		// TODO Auto-generated constructor stub
 	}
 
+	public long getId() {
+		return id;
+	}
+
 	public Taccuino(long id, String titolo) {
 		super();
 		this.id = id;
 		this.titolo = titolo;
 	}
 
-	public long getId() {
-		return id;
-	}
 
 	public void setId(long id) {
 		this.id = id;

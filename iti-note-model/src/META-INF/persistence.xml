@@ -8,11 +8,21 @@
 		<properties>
 			<property name="hibernate.archive.autodetection" value="class" />
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
-			<property name="hibernate.connection.username" value="postgres" />
-			<property name="hibernate.connection.password" value="postgres" />
-			<property name="hibernate.connection.url" value="jdbc:postgresql://127.0.0.1:5432/iti_note" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+<!-- 			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" /> -->
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			
+<!-- 			<property name="hibernate.connection.username" value="postgres" /> -->
+<property name="hibernate.connection.username" value="root" />
+
+<!-- 			<property name="hibernate.connection.password" value="postgres" /> -->
+<property name="hibernate.connection.password" value="toor" />
+
+<!-- 			<property name="hibernate.connection.url" value="jdbc:postgresql://127.0.0.1:5432/iti_note" /> -->
+			<property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1:3306/iti_note" />
+			
+<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			
 			<property name="hibernate.c3p0.min_size" value="5" />
 			<property name="hibernate.c3p0.max_size" value="20" />
 			<property name="hibernate.c3p0.timeout" value="1800" />
