@@ -39,7 +39,7 @@ public class TaccuinoController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("taccuini", Taccuino.retrieve());
 		
-		return Response.ok(new Viewable("/taccuini.jsp", model)).build();
+		return Response.ok(new Viewable("/home.jsp", model)).build();
 	}
 
 	@GET
@@ -47,6 +47,24 @@ public class TaccuinoController {
 	@Path("search")
 	public Response searchByTitolo(@QueryParam("titolo") String titolo) {
 		return Response.ok(Taccuino.searchByTitolo(titolo)).build();
+	}
+	
+	@GET
+	@Produces({ MediaType.TEXT_HTML })
+	@Path("search")
+	public Response searchByTitoloView(@QueryParam("titolo") String titolo) {
+		
+		String view = "/home.jsp";
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		
+		model.put("taccuini", Taccuino.searchByTitolo(titolo));
+		
+		if (request.getHeader("X-PJAX") != null) {
+			view = "/taccuini-partial.jsp";
+		}
+		
+		return Response.ok(new Viewable(view, model)).build();
 	}
 
 	@GET
@@ -61,7 +79,7 @@ public class TaccuinoController {
 	@Produces({ MediaType.TEXT_HTML })
 	public Response getNoteViewByTaccuinoId(@PathParam("id") long id) {
 		
-		String view = "/taccuini.jsp";
+		String view = "/home.jsp";
 		
 		Map<String, Object> model = new HashMap<String, Object>();
 		
