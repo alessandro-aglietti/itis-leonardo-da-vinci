@@ -6,12 +6,28 @@
 		<title>{{ i18n.notes.title }}</title>
 	</head>
 	<body>
+		{% if model.error %}
+			<h1>{{model.error}}</h1>
+		{% endif %}
+		
 		<div id="taccuini">
 			<ul>
-				{% for t in taccuini %}
-					        <li><a href="{{burl}}taccuino/{{t.id}}/note">{{t.titolo}}</a></li>
+				{% for t in model.taccuini %}
+					        <li><a href="{{burl}}taccuino/{{t.id}}">{{t.titolo}}</a></li>
 				{% endfor %}
 			</ul>
 		</div>
+		
+		{% if model.titolo %}
+			<h2>Note nel taccuino &quot;{{model.titolo}}&quot;</h2>
+		{% endif %}
+		
+		{% if model.note %}
+		<ul>
+			{% for n in model.note %}
+				<li><b>{{n.testo}}</b></li>
+			{% endfor %}
+		</ul>
+		{% endif %}
 	</body>
 </html>

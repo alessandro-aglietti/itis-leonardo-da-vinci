@@ -6,6 +6,7 @@ use Tonic\Response, Tonic\Resource;
 
 /**
  * @uri /taccuino
+ * @uri /taccuino/(.*+)
  */
 class Taccuini extends Resource {
 
@@ -14,10 +15,8 @@ class Taccuini extends Resource {
 	 * @provides text/html
 	 */
 	function get() {
-		
-		$model["taccuini"] = $this->container["tc"]->get("/taccuino");
 
-		$page = $this->container["twig"]->render('Taccuini.html', $model);
+		$page = $this->container["twig"]->render('Taccuini.html');
 
 		return new Response(Response::OK, $page, array(
 				'content-type' => 'text/html'

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -28,7 +29,13 @@ public class TaccuinoController {
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response get() {
-		return Response.ok(Taccuino.retrieve()).build();
+		
+		HttpSession session = request.getSession(true);
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("taccuini", Taccuino.retrieve());
+		
+		return Response.ok(model).build();
 	}
 	
 	@GET

@@ -4,7 +4,7 @@
 session_start();
 
 // BASE URL APPLICATIVO
-$baseUrl = "/itis-leonardo-da-vinci/php-frontend/";
+$baseUrl = "/iti-note-model-service/";
 
 // Carica tutte le classi necessarie a Tonic
 require_once 'src/Tonic/Autoloader.php';
@@ -58,33 +58,69 @@ $twig->addGlobal("burl", $baseUrl);
 
 class TomcatClient {
 
-	function get($path) {
+	function model() {
 
-		$ch = curl_init("http://127.0.0.1:8080/iti-note-model-service" . $path);
+		$ch = curl_init("http://" . $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI']);
+		
+		$headers = getallheaders();
+		
+		$headers['Accept'] = 'application/json';
+		
+		$curlHeaders = array();
+		
+		foreach ($headers as $key => $value) {
+			array_push($curlHeaders, $key . ": " . $value);
+		}
 		
 		$options = array(
 				CURLOPT_RETURNTRANSFER => true,
-				CURLOPT_HTTPHEADER => array('Accept: application/json')
+				CURLOPT_HTTPHEADER => $curlHeaders,
+				CURLOPT_HEADER => 1,
+				CURLOPT_CONNECTTIMEOUT_MS => 2000,
+				CURLOPT_TIMEOUT_MS => 5000
 		);
-		
-		// Setting curl options
+
 		curl_setopt_array( $ch, $options );
 		
-		$json_str = curl_exec($ch);
+		$exec = curl_exec($ch);
+		
+		$body = array("error" => "risposta vuota");
+		
+		if(!curl_errno($ch))
+		{
+			$httpStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+			if ($httpStatusCode < 400 ) {
+				$header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+			
+				$body = json_decode(substr($exec, $header_size));
+			
+				$respHeader = substr($exec, 0, $header_size);
+			
+				preg_match('/^Set-Cookie:\s*([^;]*)/mi', $respHeader, $m);
+			
+				header($m[0]);
+			} else {
+				$body = array("error" => $httpStatusCode);
+			}
+		} else {
+			$body = array("error" => "errore di comunicazione con il backend");
+		}
 		
 		curl_close($ch);
 		
-		return json_decode($json_str);
+		return $body;
 	}
 }
 
 $tc = new TomcatClient();
 
+$model = $tc->model();
+
+$twig->addGlobal("model", $model);
+
 // container disponibile da tutti i controller
 $container = array(
-		"twig" => $twig,
-		"burl" => $baseUrl,
-		"tc" => $tc
+		"twig" => $twig
 );
 
 // Tonic options
