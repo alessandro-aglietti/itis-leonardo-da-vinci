@@ -1,0 +1,17 @@
+{
+	"root" : {
+		"title" : "Title!!",
+		"h2" : "Custom i18n message!",
+		"taccuino" : "Go to Taccuino!"
+	},
+	"notes" : {
+		"title" : "Notes Page",
+		"h2" : "Insert your notes!",
+		"submit" : "Save this note",
+		"titolo" : "Insert the title",
+		"testo" : "Insert the text"
+	},
+	"note" : {
+		"title" : "Note"
+	}
+}
