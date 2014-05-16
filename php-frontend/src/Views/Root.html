@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		{% include 'bootstrap-jquery.html' %}
+		
+		<title>{{ i18n.root.title }}</title>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span4 offset4">
+					<h2 style="text-align: center;">{{ i18n.root.h2 }}</h2>
+					<h4 style="text-align: center;">{{ ssid }}</h2>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span6 offset3">
+					<p style="text-align: center;"><a href="{{ burl }}taccuino">{{ i18n.root.taccuino }}</a></p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

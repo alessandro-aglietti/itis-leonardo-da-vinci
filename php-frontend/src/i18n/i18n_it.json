@@ -1,0 +1,17 @@
+{
+	"root" : {
+		"title" : "Titolo!!",
+		"h2" : "Messaggio multilingua!",
+		"taccuino" : "Accedi ai taccuini"
+	},
+	"notes" : {
+		"title" : "Pagina delle note",
+		"h2" : "Inserisci qui le tue note",
+		"submit" : "Salva questa nota!",
+		"titolo" : "Inserisci il titolo della nota",
+		"testo" : "Inserisci il testo della nota"
+	},
+	"note" : {
+		"title" : "Nota"
+	}
+}
