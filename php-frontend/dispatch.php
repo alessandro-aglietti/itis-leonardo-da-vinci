@@ -60,7 +60,7 @@ class TomcatClient {
 
 	function get($path) {
 
-		$ch = curl_init("http://146.148.13.52:8080/iti-note-model-service" . $path);
+		$ch = curl_init("http://127.0.0.1:8080/iti-note-model-service" . $path);
 		
 		$options = array(
 				CURLOPT_RETURNTRANSFER => true,
