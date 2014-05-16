@@ -1,0 +1,15 @@
+Per far funzionare Tonic(quivalente di Jersey) è necessario abilitare il mod_rewrite di Apache2
+
+Per abilitare
+	# a2enmod rewrite
+
+Inoltre è necessario configurare come segue il file /etc/apache2/sites-available/default
+
+<Directory /home/utente/github-repositories/>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride All
+		Order allow,deny
+		allow from all
+</Directory>
+
+La direttiva NECESSARIA è "AllowOverride All"
