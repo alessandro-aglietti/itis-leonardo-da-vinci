@@ -64,6 +64,7 @@ class TomcatClient {
 		
 		$options = array(
 				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_HTTPHEADER => array('Accept: application/json')
 		);
 		
 		// Setting curl options
