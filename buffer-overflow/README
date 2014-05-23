@@ -23,3 +23,6 @@ gdb ./nomeprogramma // avvia il debugger C
 	n // exit to call F7
 	disassemble // stampa l'assembly intero alla linea corrente
 	p *0x000 // stampa la memoria intorno a quell'indirizzo
+	
+
+objdump -d nomeprogramma // esegue la stessa operazione di dissasseble ma non riechede che il debug sia attivo
