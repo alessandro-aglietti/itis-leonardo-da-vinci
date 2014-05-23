@@ -3,6 +3,12 @@
 	DocumentRoot /home/utente/github-repositories
 
 	RewriteEngine On
+	
+	# Serve static resources from google drive host
+	#RewriteCond %{HTTP_ACCEPT} (image|css|javascript)
+	#RewriteRule ^/(.*) https://googledrive.com/host/AA/$1 [R]
+	
+	# Tutto quello che non è frontend va diretto al tomcat
 	RewriteCond %{HTTP_ACCEPT} !(html|image|css|javascript)
 	RewriteRule ^/(.*) http://127.0.0.1:8080/$1 [P]
 	ProxyPassReverse / http://127.0.0.1:8080/
