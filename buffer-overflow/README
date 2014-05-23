@@ -1,0 +1,28 @@
+Abbiamo visto come affrontare esercizi disponibili al seguente sito
+http://exploit-exercises.com/protostar
+
+Livello 0 http://exploit-exercises.com/protostar/stack0
+	Riuscire a modificare una variabile che il programma non modificherebbe mai
+Livello 1 http://exploit-exercises.com/protostar/stack1
+	Riuscire a modificare una variaible che il programma non modificherebbe mai con un preciso valore
+Livello 2 http://exploit-exercises.com/protostar/stack2
+	Come il livello precedente ma tramite una variabile d'ambiente
+Livello 3 http://exploit-exercises.com/protostar/stack3
+	Riuscire ad eseguire una funzione che altrimenti non sarabbe mai usata dal programma
+	
+Dopo il livello 3 ci siamo allenati su http://io.smashthestack.org:84
+	Tramite questo sito è possibile accedere in SSH ad un ambiente dove ci possiamo esercitare.
+	Una volta loggati in SSH con le credenziali che si trovano sul sito possiamo utilizzare il comando "less": less README.it
+	In less con le frecce della tastiera è possibile scorrere, premendo "q" si chiude il programma.
+
+Comandi utili
+gdb ./nomeprogramma // avvia il debugger C
+	b <nome funzione> // si posiziona un breakpoint
+	run //si esegue fino al breakpoint
+	s // step passo passo F6
+	n // exit to call F7
+	disassemble // stampa l'assembly intero alla linea corrente
+	p *0x000 // stampa la memoria intorno a quell'indirizzo
+	
+
+objdump -d nomeprogramma // esegue la stessa operazione di dissasseble ma non riechede che il debug sia attivo
