@@ -24,3 +24,7 @@ arp -a
 
 Tramite il seguente comando indico di eseguire "CONNECTION RESET" su ogni connessione TCP/IP che viene aperta verso il dominio indicato dal comando
 tcpkill -9 -i etho host www.didasca.it
+
+ImperialVioled blog dedicato ai problemi di SSL/TLS
+
+Una volta realizzato l'arpspoof si può utilizzare i tool della suite dsniff(http://www.monkey.org/~dugsong/dsniff/) come ad esempio driftnet dnsspoof.
