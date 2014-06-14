@@ -26,3 +26,6 @@ gdb ./nomeprogramma // avvia il debugger C
 	
 
 objdump -d nomeprogramma // esegue la stessa operazione di dissasseble ma non riechede che il debug sia attivo
+
+Lettura interessante
+http://phrack.org/archives/issues/49/14.txt o http://phrack.org/issues/49/14.html (e' la stessa)
